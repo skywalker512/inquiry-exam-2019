@@ -15,6 +15,7 @@
     "styled-normalize": "^8.0.6",
     "styled-px2vw": "^1.0.9",
     "swiper": "^5.2.0",
+    "swr": "^0.1.10",
     "typescript": "3.7.2"
   },
   "scripts": {

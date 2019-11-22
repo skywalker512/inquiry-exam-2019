@@ -3,12 +3,12 @@
   <head>
     <meta charset="utf-8" />
     <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
-    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1, maximum-scale=1" />
-    <meta name="theme-color" content="#000000" />
     <meta
-      name="description"
-      content="%REACT_APP_DESC%"
+      name="viewport"
+      content="width=device-width, user-scalable=no, initial-scale=1, maximum-scale=1"
     />
+    <meta name="theme-color" content="#000000" />
+    <meta name="description" content="%REACT_APP_DESC%" />
     <link rel="apple-touch-icon" href="logo192.png" />
     <!--
       manifest.json provides metadata used when your web app is installed on a
@@ -26,18 +26,16 @@
     -->
     <title>%REACT_APP_NAME%</title>
     <script>
-      var token = document.location.hash.split('#/?token=')[1];
-      if (!localStorage.getItem('id_token') && !token) {
+      var token = document.location.href.split('/?token=')[1];
+      if (!localStorage.getItem('inquiry-exam-stu-num') && !token) {
         window.location.href =
-          'https://wx.redrock.team/magicloop/rushb?b=%PUBLIC_URL%/#/token=&scope=student';
+          'https://wx.redrock.team/magicloop/rushb?b=%PUBLIC_URL%/&scope=student';
       }
-      document.location.hash = '#/?refresh=123';
       if (token && token.length) {
         token = token.replace(/%20/g, '+');
-        document.location.hash = '#/';
-        localStorage.setItem('id_token', token);
-        const { stuNum } = JSON.parse(atob(token));
+        const { stuNum } = JSON.parse(atob(token.split('.')[0]));
         localStorage.setItem('inquiry-exam-stu-num', stuNum);
+        window.location.replace('./');
       }
     </script>
   </head>

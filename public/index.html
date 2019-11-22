@@ -26,20 +26,19 @@
     -->
     <title>%REACT_APP_NAME%</title>
     <script>
-      // var token = document.location.hash.split('#/?token=')[1];
-      // if (!localStorage.getItem('id_token') && !token) {
-      //   window.location.href =
-      //     'https://wx.redrock.team/magicloop/rushb?b=%REACT_APP_BE_URL%/token&scope=tmpbase';
-      // }
-      // document.location.hash = '#/?refresh=123';
-      // if (token && token.length) {
-      //   token = token.replace(/%20/g, '+');
-      //   document.location.hash = '#/';
-      //   localStorage.setItem('id_token', token);
-      //   const { openid, headImgUrl } = JSON.parse(atob(token));
-      //   localStorage.setItem('openid', openid);
-      //   localStorage.setItem('headImgUrl', headImgUrl);
-      // }
+      var token = document.location.hash.split('#/?token=')[1];
+      if (!localStorage.getItem('id_token') && !token) {
+        window.location.href =
+          'https://wx.redrock.team/magicloop/rushb?b=%PUBLIC_URL%/#/token=&scope=student';
+      }
+      document.location.hash = '#/?refresh=123';
+      if (token && token.length) {
+        token = token.replace(/%20/g, '+');
+        document.location.hash = '#/';
+        localStorage.setItem('id_token', token);
+        const { stuNum } = JSON.parse(atob(token));
+        localStorage.setItem('inquiry-exam-stu-num', stuNum);
+      }
     </script>
   </head>
   <body>

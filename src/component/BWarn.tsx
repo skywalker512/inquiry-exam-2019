@@ -4,12 +4,13 @@ import errorPng from '../assets/img/error.png';
 import happyPng from '../assets/img/happy.png';
 
 const Wrapper = styled.div`
-  height: 100%;
+  margin-top: 300px;
   width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  background-color: #ffffff !important;
 `;
 
 const Image = styled.img`

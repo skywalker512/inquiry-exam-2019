@@ -18,7 +18,6 @@ const Wrapper = styled.div`
     height: 100%;
     overflow: hidden;
     .swiper-slide {
-      min-height: 100%;
       height: auto;
     }
   }

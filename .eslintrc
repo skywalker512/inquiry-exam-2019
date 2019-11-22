@@ -11,6 +11,8 @@
     "implicit-arrow-linebreak": "off",
     "object-curly-newline": "off",
     "no-plusplus": "off",
-    "function-paren-newline": "off"
+    "function-paren-newline": "off",
+    "import/prefer-default-export": "off",
+    "arrow-parens": "off"
   }
 }

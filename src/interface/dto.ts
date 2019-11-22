@@ -18,3 +18,16 @@ export interface IExamScheduleData {
 export interface IExamScheduleDto extends IBase {
   data: IExamScheduleData[];
 }
+
+export interface IExamGradeData {
+  course: string;
+  grade: string;
+  property: string;
+  status: string;
+  student: string;
+  term: string;
+}
+
+export interface IExamGradeDto extends IBase {
+  data: IExamGradeData[];
+}

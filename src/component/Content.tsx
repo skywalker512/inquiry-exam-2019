@@ -2,6 +2,7 @@ import React from 'react';
 import Swiper, { ReactIdSwiperProps } from 'react-id-swiper';
 import styled from 'styled-px2vw';
 import ExamSchedule from './ExamSchedule';
+import ExamGrade from './ExamGrade';
 
 const Wrapper = styled.div`
   top: 310px;
@@ -17,12 +18,15 @@ const Wrapper = styled.div`
     height: 100%;
     overflow: hidden;
     .swiper-slide {
+      min-height: 100%;
       height: auto;
     }
   }
   .swiper-pagination {
     top: -240px;
     left: 170px !important;
+    // 以防下面的被挡住
+    height: 0 !important;
   }
   .swiper-pagination-bullet-active {
     background: transparent;
@@ -51,54 +55,36 @@ const Wrapper = styled.div`
 `;
 
 const Content = styled.div`
-  min-height: 269px;
+  min-height: 100%;
 `;
 
-export default () => {
-  const title = ['考试查询', '补考查询', '成绩查询'];
-  const config: ReactIdSwiperProps = {
-    lazy: true,
-    slidesPerView: 'auto',
-    pagination: {
-      el: '.swiper-pagination',
-      clickable: true,
-      renderBullet(index, className) {
-        return `<span class="${className}">${title[index]}</span>`;
-      },
+const title = ['考试查询', '补考查询', '成绩查询'];
+
+const config: ReactIdSwiperProps = {
+  lazy: true,
+  slidesPerView: 'auto',
+  pagination: {
+    el: '.swiper-pagination',
+    clickable: true,
+    renderBullet(index, className) {
+      return `<span class="${className}">${title[index]}</span>`;
     },
-  };
-
-  const subConfig: ReactIdSwiperProps = {
-    containerClass: 'inner-swiper-container',
-    direction: 'vertical',
-    slidesPerView: 'auto',
-    freeMode: true,
-    mousewheel: true,
-  };
-
-  return (
-    <Wrapper>
-      {/* eslint-disable-next-line react/jsx-props-no-spreading */}
-      <Swiper {...config}>
-        <Content>
-          {/* eslint-disable-next-line react/jsx-props-no-spreading */}
-          <Swiper {...subConfig}>
-            <ExamSchedule />
-          </Swiper>
-        </Content>
-        <Content>
-          {/* eslint-disable-next-line react/jsx-props-no-spreading */}
-          <Swiper {...subConfig}>
-            <div>a</div>
-          </Swiper>
-        </Content>
-        <Content>
-          {/* eslint-disable-next-line react/jsx-props-no-spreading */}
-          <Swiper {...subConfig}>
-            <div>a</div>
-          </Swiper>
-        </Content>
-      </Swiper>
-    </Wrapper>
-  );
+  },
 };
+
+export default () => (
+  <Wrapper>
+    {/* eslint-disable-next-line react/jsx-props-no-spreading */}
+    <Swiper {...config}>
+      <Content>
+        <ExamSchedule isReexam={false} />
+      </Content>
+      <Content>
+        <ExamSchedule isReexam />
+      </Content>
+      <Content>
+        <ExamGrade />
+      </Content>
+    </Swiper>
+  </Wrapper>
+);

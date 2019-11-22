@@ -20,5 +20,6 @@ export const GlobalStyle = createGlobalStyle`
      overflow: hidden;
      color: ${Theme.color.mainFontColor};
      -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+     background-color: #f5faff;
   }
 `;

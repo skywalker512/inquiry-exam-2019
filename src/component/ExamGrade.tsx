@@ -1,39 +1,34 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import styled from 'styled-px2vw';
 import Swiper, { ReactIdSwiperProps, SwiperInstance } from 'react-id-swiper';
 import useStuNum from '../hook/useStuNum';
-import { useExamSchedule } from '../hook/useFetch';
+import { useExamGrade } from '../hook/useFetch';
 import BWarn from './BWarn';
-import ExamScheduleList from './ExamScheduleList';
+import ExamGradeList from './ExamGradeList';
 import Config from '../config';
 
 const Wrapper = styled.div`
   width: 100%;
-  height: 100%;
   & > div:nth-child(2n - 1) {
     background-color: #f5faff;
   }
 `;
 
-export default ({ isReexam = false }) => {
-  const stuNum = useStuNum();
-  const { data, error } = useExamSchedule(
-    stuNum,
-    isReexam ? 'examReexam' : 'examSchedule',
-  );
-  // 避免两次 render 拿到同样的实例
-  const [swiperInstance, SetSwiperInstance] = useState<SwiperInstance>();
+let swiperInstance: SwiperInstance;
 
-  const config: ReactIdSwiperProps = {
-    ...Config.subSwiperConfig,
-    getSwiper: swiper => {
-      SetSwiperInstance(swiper);
-    },
-  };
+const config: ReactIdSwiperProps = {
+  ...Config.subSwiperConfig,
+  getSwiper: swiper => {
+    swiperInstance = swiper;
+  },
+};
+
+export default () => {
+  const stuNum = useStuNum();
+  const { data, error } = useExamGrade(stuNum);
 
   useEffect(() => {
     if (swiperInstance) swiperInstance.update();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [data]);
 
   return (
@@ -47,7 +42,7 @@ export default ({ isReexam = false }) => {
         )}
         {data &&
           data.data.map(item => (
-            <ExamScheduleList key={item.course + item.seat} item={item} />
+            <ExamGradeList key={item.course + item.grade} item={item} />
           ))}
       </Wrapper>
     </Swiper>

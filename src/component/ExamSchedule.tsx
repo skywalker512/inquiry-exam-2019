@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-px2vw';
 import Swiper, { ReactIdSwiperProps, SwiperInstance } from 'react-id-swiper';
-import useStuNum from '../hook/useStuNum';
 import { useExamSchedule } from '../hook/useFetch';
 import BWarn from './BWarn';
 import ExamScheduleList from './ExamScheduleList';
 import Config from '../config';
+import getInfo from '../hook/getInfo';
 
 const Wrapper = styled.div`
   width: 100%;
@@ -15,8 +15,9 @@ const Wrapper = styled.div`
   }
 `;
 
+const { stuNum } = getInfo;
+
 export default ({ isReexam = false }) => {
-  const stuNum = useStuNum();
   const { data, error } = useExamSchedule(
     stuNum,
     isReexam ? 'examReexam' : 'examSchedule',

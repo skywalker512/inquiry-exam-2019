@@ -1,11 +1,11 @@
 import React, { useEffect } from 'react';
 import styled from 'styled-px2vw';
 import Swiper, { ReactIdSwiperProps, SwiperInstance } from 'react-id-swiper';
-import useStuNum from '../hook/useStuNum';
 import { useExamGrade } from '../hook/useFetch';
 import BWarn from './BWarn';
 import ExamGradeList from './ExamGradeList';
 import Config from '../config';
+import getInfo from '../hook/getInfo';
 
 const Wrapper = styled.div`
   width: 100%;
@@ -23,8 +23,9 @@ const config: ReactIdSwiperProps = {
   },
 };
 
+const { stuNum } = getInfo;
+
 export default () => {
-  const stuNum = useStuNum();
   const { data, error } = useExamGrade(stuNum);
 
   useEffect(() => {

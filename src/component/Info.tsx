@@ -1,7 +1,6 @@
 import React from 'react';
 import styled from 'styled-px2vw';
-import useStuNum from '../hook/useStuNum';
-import useTerm from '../hook/useTerm';
+import getInfo from '../hook/getInfo';
 
 const Wrapper = styled.div`
   height: 310px;
@@ -33,15 +32,13 @@ const StudentNum = styled(Text)`
   }
 `;
 
-export default () => {
-  const stuNum = useStuNum();
-  const term = useTerm();
-  return (
-    <Wrapper>
-      <Content>
-        <StudentNum>{stuNum}</StudentNum>
-        <Text>{term}</Text>
-      </Content>
-    </Wrapper>
-  );
-};
+const { term, stuNum } = getInfo;
+
+export default () => (
+  <Wrapper>
+    <Content>
+      <StudentNum>{stuNum}</StudentNum>
+      <Text>{term}</Text>
+    </Content>
+  </Wrapper>
+);

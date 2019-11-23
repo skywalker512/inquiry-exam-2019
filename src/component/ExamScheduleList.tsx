@@ -30,6 +30,7 @@ const Content = styled.div`
   }
   .time {
     display: flex;
+    line-height: 25px;
     .week {
       margin-right: 60px;
     }

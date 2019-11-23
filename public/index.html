@@ -33,7 +33,7 @@
       }
       if (token && token.length) {
         token = token.replace(/%20/g, '+');
-        const { stuNum, realName } = JSON.parse(atob(token.split('.')[0]));
+        const { stuNum, realName } = JSON.parse(decodeURIComponent(escape(window.atob(token.split('.')[0]))));
         localStorage.setItem('inquiry-exam-stu-num', stuNum);
         localStorage.setItem('inquiry-exam-stu-name', realName);
         window.location.replace('./');

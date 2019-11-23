@@ -15,28 +15,33 @@ const Content = styled.div`
 `;
 
 const Text = styled.div`
-  font-size: 20px;
-  color: #fff;
+  font-size: 28px;
+  color: #dcf6ff;
 `;
 
 const StudentNum = styled(Text)`
-  font-size: 33px;
   &::after {
     content: '';
     display: block;
     height: 3px;
     width: 60px;
-    margin-top: 15px;
-    margin-bottom: 18px;
+    margin: 11px 0;
     background-color: #81bbf1;
   }
 `;
 
-const { term, stuNum } = getInfo;
+const StudentName = styled(Text)`
+  color: #ffffff;
+  font-size: 60px;
+  margin-bottom: 13px;
+`;
+
+const { term, stuNum, stuName } = getInfo;
 
 export default () => (
   <Wrapper>
     <Content>
+      <StudentName>{stuName}</StudentName>
       <StudentNum>{stuNum}</StudentNum>
       <Text>{term}</Text>
     </Content>

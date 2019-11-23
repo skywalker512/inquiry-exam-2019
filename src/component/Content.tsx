@@ -35,11 +35,11 @@ const Wrapper = styled.div`
       position: absolute;
       top: 167px;
       left: 0;
-      height: 5px;
+      height: 4px;
       width: 32px;
       border-radius: 8px;
       background-color: #fff;
-      box-shadow: 1px 2px 5px 0;
+      box-shadow: 1px 2px 2px 0;
     }
   }
   .swiper-pagination-bullet {

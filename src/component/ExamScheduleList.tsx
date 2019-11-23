@@ -1,21 +1,79 @@
 import React from 'react';
 import styled from 'styled-px2vw';
 import { IExamScheduleData } from '../interface/dto';
+import iconTimePng from '../assets/img/iconTime.png';
+import iconClassroomPng from '../assets/img/iconClassroom.png';
+import iconSitePng from '../assets/img/iconSite.png';
 
-const Wrapper = styled.div``;
+const Wrapper = styled.div`
+  height: 163px;
+  display: flex;
+  align-items: center;
+`;
+
+const Split = styled.div`
+  width: 4px;
+  height: 80px;
+  background-color: #d9e4ed;
+  margin-right: 60px;
+`;
+
 const Content = styled.div`
-  padding: 50px 40px;
-  color: #8d8d8d;
+  margin-left: 45px;
+  color: #666666;
+  font-size: 24px;
   .title {
-    color: #454545;
-    font-size: 35px;
-    margin-bottom: 10px;
+    color: #232323;
+    font-size: 34px;
+    margin-bottom: 25px;
+    width: 490px;
   }
   .time {
     display: flex;
-    margin-bottom: 8px;
     .week {
       margin-right: 60px;
+    }
+    &::before {
+      content: '';
+      background-image: url(${iconTimePng});
+      height: 25px;
+      width: 25px;
+      background-size: 100%;
+      margin-right: 15px;
+    }
+  }
+`;
+
+const Location = styled.div`
+  color: #666666;
+  font-size: 26px;
+  .classroom {
+    margin-bottom: 30px;
+    line-height: 32px;
+    position: relative;
+    margin-left: 40px;
+    &::before {
+      content: '';
+      position: absolute;
+      right: 74px;
+      background-image: url(${iconClassroomPng});
+      height: 32px;
+      width: 24px;
+      background-size: 100%;
+    }
+  }
+  .seat {
+    line-height: 23px;
+    position: relative;
+    margin-left: 40px;
+    &::before {
+      content: '';
+      position: absolute;
+      right: 74px;
+      background-image: url(${iconSitePng});
+      height: 23px;
+      width: 24px;
+      background-size: 100%;
     }
   }
 `;
@@ -44,10 +102,12 @@ const ExamScheduleList: React.FC<{ item: IExamScheduleData }> = ({
           {beginTime} - {endTime}
         </div>
       </div>
-      <div className="location">
-        {classroom} 场 {seat} 号
-      </div>
     </Content>
+    <Split />
+    <Location>
+      <div className="classroom">{classroom}</div>
+      <div className="seat">{seat}</div>
+    </Location>
   </Wrapper>
 );
 

@@ -9,7 +9,7 @@ const Wrapper = styled.div`
 `;
 
 const Course = styled.div`
-  color: #000000;
+  color: #2f2f2f;
   font-size: 30px;
   padding: 0 40px;
   width: 420px;
@@ -17,7 +17,7 @@ const Course = styled.div`
 const Split = styled.div`
   width: 4px;
   height: 50px;
-  background-color: #e2e6ea;
+  background-color: #d9e4ed;
 `;
 const Grade = styled.div`
   font-size: 30px;

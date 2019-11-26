@@ -1,6 +1,11 @@
+type Pick<T, K extends keyof T> = {
+  [P in K]: T[P];
+};
+
 export interface IBase {
   version: string;
   status: number;
+  nowWeek: number;
 }
 
 export interface IExamScheduleData {
@@ -28,6 +33,6 @@ export interface IExamGradeData {
   term: string;
 }
 
-export interface IExamGradeDto extends IBase {
+export interface IExamGradeDto extends Pick<IBase, 'version' | 'status'> {
   data: IExamGradeData[];
 }

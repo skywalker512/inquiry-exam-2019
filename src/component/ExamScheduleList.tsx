@@ -4,6 +4,7 @@ import { IExamScheduleData } from '../interface/dto';
 import iconTimePng from '../assets/img/iconTime.png';
 import iconClassroomPng from '../assets/img/iconClassroom.png';
 import iconSitePng from '../assets/img/iconSite.png';
+import computeTime from '../fun/computeTime';
 
 const Wrapper = styled.div`
   height: 163px;
@@ -32,7 +33,7 @@ const Content = styled.div`
     display: flex;
     line-height: 25px;
     .week {
-      margin-right: 60px;
+      margin-right: 30px;
     }
     &::before {
       content: '';
@@ -79,8 +80,6 @@ const Location = styled.div`
   }
 `;
 
-const day = ['一', '二', '三', '四', '五', '六', '天'];
-
 const ExamScheduleList: React.FC<{ item: IExamScheduleData }> = ({
   item: {
     course,
@@ -96,9 +95,7 @@ const ExamScheduleList: React.FC<{ item: IExamScheduleData }> = ({
     <Content>
       <div className="title">{course}</div>
       <div className="time">
-        <div className="week">
-          {week}周 周{day[Number(weekday) - 1]}
-        </div>
+        <div className="week">{computeTime(week, weekday)}</div>
         <div className="clock">
           {beginTime} - {endTime}
         </div>

@@ -22,6 +22,9 @@ export default ({ isReexam = false }) => {
     stuNum,
     isReexam ? 'examReexam' : 'examSchedule',
   );
+  if (data && data.nowWeek) {
+    sessionStorage.setItem('nowWeek', data.nowWeek.toString());
+  }
   // 避免两次 render 拿到同样的实例
   const [swiperInstance, SetSwiperInstance] = useState<SwiperInstance>();
 

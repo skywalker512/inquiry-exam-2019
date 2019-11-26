@@ -20,5 +20,7 @@ export const GlobalStyle = createGlobalStyle`
      overflow: hidden;
      color: ${Theme.color.mainFontColor};
      -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+     background-color: #ffffff !important;
+     font-family: -apple-system, BlinkMacSystemFont, "PingFang SC","Helvetica Neue",STHeiti,"Microsoft Yahei",Tahoma,Simsun,sans-serif;
   }
 `;

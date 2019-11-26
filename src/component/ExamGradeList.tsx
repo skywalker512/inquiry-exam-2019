@@ -27,6 +27,7 @@ const Grade = styled.div`
   margin: 0 40px;
 `;
 const Types = styled.div`
+  box-sizing: border-box;
   width: 85px;
   border-radius: 85px;
   text-align: center;

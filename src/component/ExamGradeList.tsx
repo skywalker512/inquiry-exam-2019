@@ -13,6 +13,9 @@ const Course = styled.div`
   font-size: 30px;
   padding: 0 40px;
   width: 420px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 `;
 const Split = styled.div`
   width: 4px;

@@ -28,6 +28,9 @@ const Content = styled.div`
     font-size: 34px;
     margin-bottom: 25px;
     width: 490px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
   }
   .time {
     display: flex;

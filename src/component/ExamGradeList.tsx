@@ -30,9 +30,10 @@ const Types = styled.div`
   box-sizing: border-box;
   width: 85px;
   border-radius: 85px;
-  text-align: center;
   font-size: 20px;
-  line-height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   height: 40px;
   color: #fff;
 `;
